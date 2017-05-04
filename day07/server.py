@@ -13,6 +13,11 @@ while True:
     client_data = conn.recv(1024)
     print(client_data.decode())
     conn.send('不要回答，不要回答'.encode())
+    while True:
+        client_data = conn.recv(1024)
+        print(client_data.decode())
+        server_response = input('\033[32;1m>>:\033[0m').strip()
+        conn.send(server_response.encode())
 
     conn.close()
 
